@@ -1,0 +1,23 @@
+%h1 Listing claims
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Surname
+      %th
+      %th
+      %th
+
+  %tbody
+    - @claims.each do |claim|
+      %tr
+        %td= claim.name
+        %td= claim.surname
+        %td= link_to 'Show', claim
+        %td= link_to 'Edit', edit_claim_path(claim)
+        %td= link_to 'Destroy', claim, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Claim', new_claim_path

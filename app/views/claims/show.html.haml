@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @claim.name
+%p
+  %b Surname:
+  = @claim.surname
+
+= link_to 'Edit', edit_claim_path(@claim)
+\|
+= link_to 'Back', claims_path
