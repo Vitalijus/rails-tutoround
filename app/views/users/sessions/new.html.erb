@@ -1,0 +1,43 @@
+<div id="user-form-wrapper">
+  <h2 id="user-form-heading">
+    <%= image_tag "heading-2-500x200.jpg" %>
+  </h2>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+    <div id="user-form-fields">
+      <div class="user-field-wrapper">
+        <div class="user-label">
+          <%= f.label :email %>
+        </div>
+
+          <%= f.email_field :email, autofocus: true, :class => "user-field" %>
+      </div>
+
+      <div class="user-field-wrapper">
+        <div class="user-label">
+          <%= f.label :password %>
+        </div>
+
+    	<%= f.password_field :password, autocomplete: "off", :class => "user-field" %>
+      </div>
+
+      <% if devise_mapping.rememberable? -%>
+      	<div id="user-remember-me">
+	      <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+	    </div>
+	  <% end -%>
+
+      <div class="user-sign-wrapper">
+        <%= f.submit "Sign in", :class => "user-submit-button" %>
+      </div>
+
+      <div class="user-cancel-button">
+        <%= render "users/shared/links" %>
+        <%= link_to "Cancel", root_url %>
+      </div>
+    </div>
+
+  <% end %>
+</div>
+

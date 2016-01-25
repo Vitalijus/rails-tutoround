@@ -1,0 +1,30 @@
+<div id="user-form-wrapper">
+  <h2 id="user-form-heading">
+    <%= image_tag "heading-3-500x200.jpg" %>
+  </h2>
+
+	<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  	<%= devise_error_messages! %>
+
+	  	<div id="user-form-fields">
+	  		<div class="user-field-wrapper">
+			  <div class="user-label">
+			    <%= f.label :email %>
+			  </div>
+
+			    <%= f.email_field :email, autofocus: true, :class => "user-field" %>
+			  </div><!-- .user-field-wrapper -->
+
+			  <div class="user-sign-wrapper">
+			    <%= f.submit "Reset password", :class => "user-submit-button" %>
+			  </div>
+		
+			<div class="user-cancel-button">
+			    <%= render "users/shared/links" %>
+			    <%= link_to "Cancel", root_url %>
+			</div><!-- .user-cancel-button -->
+
+		</div><!-- #user-form-fields -->
+
+	<% end %>
+</div><!-- #user-form-wrapper -->

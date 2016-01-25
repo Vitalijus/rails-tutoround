@@ -1,0 +1,71 @@
+<div id="user-form-wrapper">
+  <h2 id="user-form-heading">
+    <%= image_tag "heading-1-500x200.jpg" %>
+  </h2>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    
+    <div class="validation-errors" >
+      <div id="error_explanation">
+        <%= devise_error_messages! %>
+      </div>
+    </div>
+
+    <div id="user-form-fields">
+      <div class="user-field-wrapper">
+        <div class="user-label">
+          <%= f.label :first_name %>
+        </div>
+
+        <%= f.text_field :first_name, :class => "user-field" %>
+      </div>
+
+      <div class="user-field-wrapper">
+        <div class="user-label">
+          <%= f.label :last_name %>
+        </div>
+
+        <%= f.text_field :last_name, :class => "user-field" %>
+      </div>
+
+      <div class="user-field-wrapper">
+        <div class="user-label">
+          <%= f.label :email %>
+        </div>
+
+          <%= f.email_field :email, autofocus: true, :class => "user-field" %>
+      </div>
+
+      <div class="user-field-wrapper">
+        <div class="user-label">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %>
+        </div>
+
+          <%= f.password_field :password, autocomplete: "off", :class => "user-field" %>
+      </div>
+
+      <div class="user-field-wrapper">
+        <div class="user-label">
+          <%= f.label :password_confirmation %>
+        </div>
+
+          <%= f.password_field :password_confirmation, autocomplete: "off", :class => "user-field" %>
+      </div>
+
+      <div class="user-sign-wrapper">
+        <%= f.submit "Sign up", :class => "user-submit-button" %>
+      </div>
+
+      <div class="user-cancel-button">
+        <%= render "users/shared/links" %>
+        <%= link_to "Cancel", root_url %>
+      </div>
+
+
+    </div>
+
+  <% end %>
+</div>

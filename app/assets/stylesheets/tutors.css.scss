@@ -1,0 +1,102 @@
+// Place all the styles related to the Tutors controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* Google map */
+
+#google-map-wrapper {
+	width: 60%;
+	float: left;
+	height: calc(100% - 100px);
+	position: fixed;
+	top: 65px;
+	z-index: 9999;
+}
+
+#map {
+	width: 100%;
+	height: 100%;
+}
+
+/* end */
+
+/* Search filter */
+
+.search-filter-header   {
+	height: 35px;
+	line-height: 35px;
+	padding: 0 0 0 20px;
+	font-weight: 400;
+	font-size: 12px;
+	position: relative;
+	text-transform: uppercase;
+	color: #777;
+	font-family: "Lato", Helvetica, Arial, sans-serif;
+	background-color: #f0f0f0;
+}
+
+.search-filter-box {
+	width: 100%;
+	height: 200px;
+	position: absolute;
+	top: -200px;
+	display: none;
+	z-index: 999999;
+	background-color: #F0F0F0;
+}
+
+.search-filter-open {
+	width: 150px;
+	height: 100%;
+	line-height: 35px;
+	float: right;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 1px;
+	color: #fff;
+	cursor: pointer;
+	background-color: #25A9DF;
+}
+
+.search-filter-close {
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	position: absolute;
+	bottom: -30px;
+	cursor: pointer;
+	text-align: center;
+	background-color: #25A9DF;
+}
+
+.search-filter-open img {
+	position: absolute;
+	right: 33px;
+	top: 13px;
+}
+
+/* end */
+
+/* List of tutors */
+
+#tutor-list {
+	width: 40%;
+	float: right;
+	margin-top: 65px;
+}
+
+#tutor-list li {
+	width: 100%;
+	height: 85px;
+	padding: 10px;
+	background-color: #ffebdf;
+	border: 0px solid green;
+}
+
+#tutor-list li:hover {
+	background-color: #ffe1cf;
+}
+
+/* end */

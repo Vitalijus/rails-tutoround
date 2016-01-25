@@ -11,7 +11,7 @@ Mbfund::Application.configure do
   config.eager_load = true
 
   # In production, :host should be set to the actual host of your application.
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: "https://powerful-citadel-2016.herokuapp.com/", port: 3000 }
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false

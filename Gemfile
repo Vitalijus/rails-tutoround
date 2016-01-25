@@ -6,8 +6,19 @@ gem 'rails', '4.0.8'
 # Use postgresql as the database for Active Record
 gem 'pg'
 
+# Tiny, fast & funny HTTP server
 gem 'thin'
 
+# Complete Ruby geocoding solution
+gem 'geocoder'
+
+# Google map for Rails
+gem 'gmaps4rails'
+
+# Ransack enables the creation advanced search forms Rails
+gem 'ransack'
+
+# Haml-rails provides Haml generators for Rails
 gem "haml-rails", "~> 0.9"
 
 # Authentication solution for Rails

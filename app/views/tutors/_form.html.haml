@@ -1,0 +1,58 @@
+= form_for @tutor do |f|
+  - if @tutor.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@tutor.errors.count, "error")} prohibited this tutor from being saved:"
+      %ul
+        - @tutor.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :surname
+    = f.text_field :surname
+  .field
+    = f.label :house_number
+    = f.text_field :house_number
+  .field
+    = f.label :street
+    = f.text_field :street
+  .field
+    = f.label :city
+    = f.text_field :city
+  .field
+    = f.label :state
+    = f.text_field :state
+  .field
+    = f.label :postcode
+    = f.text_field :postcode
+  .field
+    = f.label :country
+    = f.text_field :country
+  .field
+    = f.label :price_per_hour
+    = f.text_field :price_per_hour
+  .field
+    = f.label :about_me
+    = f.text_field :about_me
+  .field
+    = f.label :qualification
+    = f.text_field :qualification
+  .field
+    = f.label :availability
+    = f.text_field :availability
+  .field
+    = f.label :experience
+    = f.text_field :experience
+  .field
+    = f.label :tutoring_type
+    = f.text_field :tutoring_type
+  .field
+    = f.label :subject
+    = f.text_field :subject
+  .field
+    = f.label :avatar
+    = f.text_field :avatar
+  .actions
+    = f.submit 'Save'

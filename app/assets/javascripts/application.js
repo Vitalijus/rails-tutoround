@@ -12,5 +12,27 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require underscore
+//= require gmaps/google
 //= require turbolinks
 //= require_tree .
+
+// SEARCH FILTER 
+$(document).ready(function() {
+    $('.search-filter-open').click(function() {
+      $(".search-filter-box").animate({top: 0}, 250).show();
+    });
+
+    $('.search-filter-close').click(function() {
+      $(".search-filter-box").animate({top: -230}, 250);
+    });
+});
+
+// CURRENT LINK HIGHLIGHT
+$(document).ready(function() {
+  $("#nav-links a[href]").each(function() {
+    if (this.href == window.location.href) {
+      $(this).addClass("nav-current-link");
+    }
+  });
+});
