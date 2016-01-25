@@ -1,0 +1,423 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+
+ */
+
+
+ html {
+	height: 100% !important;
+}
+
+body {
+	position: relative;
+	height: 100%;
+	font-size: 14px;
+	color: #363940;
+	font-family: 'Roboto', Helvetica, Arial, sans-serif;
+	background-color: #E9E9E7;
+}
+
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+    /* Removes padding behaviour on widths */
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Roboto', Helvetica, Arial, sans-serif;
+	font-weight: 700;
+	margin-bottom: 10px;
+}
+
+h1 {
+	font-size: 36px;
+}
+
+h2 {
+	font-size: 30px;
+}
+
+h3 {
+	font-size: 26px;
+}
+
+h4 {
+	font-size: 22px;
+}
+
+h5 {
+	font-size: 18px;
+}
+
+p {
+	font: 14px/1.5em "Roboto";
+}
+
+/* END */
+
+/* Header & Nav */
+
+#header {
+	width: 100%;
+	height: 65px;
+	position: fixed;
+	top: 0;
+	z-index: 99999;
+}
+
+#nav {
+	width: 100%;
+	height: 65px;
+	background-color: #253939;
+	overflow: hidden;
+}
+
+/* end */
+
+/* Navigation panel */
+
+.nav-panel {
+	width: 60%;
+	float: left;
+}
+
+#website-logo {
+	height: 100%;
+	float: left;
+	background-color: #FF8B6B;
+}
+
+.search-tutor {
+	height: 100%;
+	line-height: 50px;
+	float: left;
+}
+
+.search-field {
+	width: 300px;
+	height: 65px;
+	padding: 14px;
+	border: 0;
+	outline: none; /* removes Chrome form field outline */
+	font-size: 16px;
+	background-color: #253939;
+	color: #fff;
+}
+
+.search-icon {
+	width: 40px;
+	height: 65px;
+	float: left;
+	position: relative;
+}
+
+.search-icon img {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.search-button {
+	padding: 10px;
+	margin: 0 10px;
+	background-color: #fff;
+	outline: none; /* removes Chrome form field outline */
+	border: none;
+}
+
+/* end */
+
+/* Navigation links */
+
+#nav-links {
+	width: 40%;
+	float: right;
+	height: 100%;
+}
+
+.nav-link {
+	width: 33.33333333%;
+	display: inline-block;
+	position: relative;
+	height: 100%;
+	line-height: 65px;
+	text-align: center;
+	margin-right: -4px;
+	font-weight: 500;
+	font-family: "Lato", Helvetica, Arial, sans-serif;
+	letter-spacing: 1px;
+	color: #fff;
+	text-transform: uppercase;
+
+	-webkit-transition: background-color 150ms linear;
+  	-moz-transition: background-color 150ms linear;
+  	-o-transition: background-color 150ms linear;
+  	-ms-transition: background-color 150ms linear;
+  	transition: background-color 150ms linear;
+}
+
+.nav-link:hover {
+	background-color: #FF8B6B; 
+}
+
+.nav-current-link {
+	background-color: #FF8B6B;
+}
+
+/* end */
+/* Google map */
+/* line 7, /home/vitalijus/mbfund/app/assets/stylesheets/tutors.css.scss */
+#google-map-wrapper {
+  width: 60%;
+  float: left;
+  height: calc(100% - 100px);
+  position: fixed;
+  top: 65px;
+  z-index: 9999;
+}
+
+/* line 16, /home/vitalijus/mbfund/app/assets/stylesheets/tutors.css.scss */
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+/* end */
+/* Search filter */
+/* line 25, /home/vitalijus/mbfund/app/assets/stylesheets/tutors.css.scss */
+.search-filter-header {
+  height: 35px;
+  line-height: 35px;
+  padding: 0 0 0 20px;
+  font-weight: 400;
+  font-size: 12px;
+  position: relative;
+  text-transform: uppercase;
+  color: #777;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+/* line 38, /home/vitalijus/mbfund/app/assets/stylesheets/tutors.css.scss */
+.search-filter-box {
+  width: 100%;
+  height: 200px;
+  position: absolute;
+  top: -200px;
+  display: none;
+  z-index: 999999;
+  background-color: #F0F0F0;
+}
+
+/* line 48, /home/vitalijus/mbfund/app/assets/stylesheets/tutors.css.scss */
+.search-filter-open {
+  width: 150px;
+  height: 100%;
+  line-height: 35px;
+  float: right;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #fff;
+  cursor: pointer;
+  background-color: #25A9DF;
+}
+
+/* line 63, /home/vitalijus/mbfund/app/assets/stylesheets/tutors.css.scss */
+.search-filter-close {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  position: absolute;
+  bottom: -30px;
+  cursor: pointer;
+  text-align: center;
+  background-color: #25A9DF;
+}
+
+/* line 74, /home/vitalijus/mbfund/app/assets/stylesheets/tutors.css.scss */
+.search-filter-open img {
+  position: absolute;
+  right: 33px;
+  top: 13px;
+}
+
+/* end */
+/* List of tutors */
+/* line 84, /home/vitalijus/mbfund/app/assets/stylesheets/tutors.css.scss */
+#tutor-list {
+  width: 40%;
+  float: right;
+  margin-top: 65px;
+}
+
+/* line 90, /home/vitalijus/mbfund/app/assets/stylesheets/tutors.css.scss */
+#tutor-list li {
+  width: 100%;
+  height: 85px;
+  padding: 10px;
+  background-color: #ffebdf;
+  border: 0px solid green;
+}
+
+/* line 98, /home/vitalijus/mbfund/app/assets/stylesheets/tutors.css.scss */
+#tutor-list li:hover {
+  background-color: #ffe1cf;
+}
+
+/* end */
+/* line 1, /home/vitalijus/mbfund/app/assets/stylesheets/user.css.scss */
+#user-form-wrapper {
+  width: 500px;
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 60px;
+  background-color: #fff;
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(150, 150, 150, 0.5);
+  -moz-box-shadow: 2px 2px 5px 0px rgba(150, 150, 150, 0.5);
+  box-shadow: 2px 2px 5px 0px rgba(150, 150, 150, 0.5);
+}
+
+/* line 13, /home/vitalijus/mbfund/app/assets/stylesheets/user.css.scss */
+#user-form-heading {
+  height: 200px;
+  background-color: #4285F4;
+}
+
+/* line 18, /home/vitalijus/mbfund/app/assets/stylesheets/user.css.scss */
+#user-form-fields {
+  padding: 20px;
+}
+
+/* line 22, /home/vitalijus/mbfund/app/assets/stylesheets/user.css.scss */
+.user-field-wrapper {
+  margin-bottom: 20px;
+}
+
+/* line 26, /home/vitalijus/mbfund/app/assets/stylesheets/user.css.scss */
+.user-field {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  /* removes Chrome form field outline */
+  background-color: #FDFDFD;
+  border: 1px solid #E5E5E5;
+}
+
+/* line 34, /home/vitalijus/mbfund/app/assets/stylesheets/user.css.scss */
+.user-label {
+  font-weight: 500;
+  padding-bottom: 5px;
+}
+
+/* line 39, /home/vitalijus/mbfund/app/assets/stylesheets/user.css.scss */
+.user-sign-wrapper {
+  height: 50px;
+}
+
+/* line 43, /home/vitalijus/mbfund/app/assets/stylesheets/user.css.scss */
+.user-submit-button {
+  width: 100%;
+  height: 100%;
+  background-color: #4485F5;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  -webkit-transition: background-color 150ms linear;
+  -moz-transition: background-color 150ms linear;
+  -o-transition: background-color 150ms linear;
+  -ms-transition: background-color 150ms linear;
+  transition: background-color 150ms linear;
+}
+
+/* line 60, /home/vitalijus/mbfund/app/assets/stylesheets/user.css.scss */
+.user-submit-button:hover {
+  background-color: #3d77dc;
+}
+
+/* line 64, /home/vitalijus/mbfund/app/assets/stylesheets/user.css.scss */
+.user-cancel-button {
+  font-size: 14px;
+  border: none;
+  margin-top: 20px;
+  -webkit-transition: background-color 150ms linear;
+  -moz-transition: background-color 150ms linear;
+  -o-transition: background-color 150ms linear;
+  -ms-transition: background-color 150ms linear;
+  transition: background-color 150ms linear;
+}
+
+/* line 76, /home/vitalijus/mbfund/app/assets/stylesheets/user.css.scss */
+.user-cancel-button a {
+  color: #777;
+}
+
+/* line 80, /home/vitalijus/mbfund/app/assets/stylesheets/user.css.scss */
+.user-cancel-button a:hover {
+  color: #4485F5;
+}
+
+/* line 84, /home/vitalijus/mbfund/app/assets/stylesheets/user.css.scss */
+#user-remember-me {
+  margin-bottom: 20px;
+  border: 0px solid red;
+}
+
+/* validation errors */
+/* line 91, /home/vitalijus/mbfund/app/assets/stylesheets/user.css.scss */
+#error_explanation h2 {
+  display: none;
+}
+
+/* line 95, /home/vitalijus/mbfund/app/assets/stylesheets/user.css.scss */
+#error_explanation ul {
+  padding: 10px 20px 0 20px;
+}
+
+/* line 99, /home/vitalijus/mbfund/app/assets/stylesheets/user.css.scss */
+#error_explanation li {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f8b0b1;
+  color: #a84346;
+  border: 1px solid #f16164;
+}
+
+/* line 107, /home/vitalijus/mbfund/app/assets/stylesheets/user.css.scss */
+#error_explanation li:last-child {
+  margin-bottom: 0;
+}
