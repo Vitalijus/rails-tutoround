@@ -17,6 +17,18 @@
 //= require turbolinks
 //= require_tree .
 
+// USER NAV PANEL
+$(document).ready(function() {
+  $(".nav-link.user-panel").mouseenter(function() {
+    $(".user-setting-panel").fadeIn(250);
+  });
+
+  $(".nav-link.user-panel").mouseleave(function() {
+    $(".user-setting-panel").fadeOut(250);
+  });
+});
+
+
 // SEARCH FILTER 
 $(document).ready(function() {
     $('.search-filter-open').click(function() {

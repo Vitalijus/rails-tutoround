@@ -1,9 +1,8 @@
-<div id="user-form-wrapper">
-  <h2 id="user-form-heading">
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %> 
+  <div id="user-form-wrapper">
+  <!--<h2 id="user-form-heading">
     <%= image_tag "heading-1-500x200.jpg" %>
-  </h2>
-
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  </h2>-->
     
     <div class="validation-errors" >
       <div id="error_explanation">
@@ -55,17 +54,14 @@
           <%= f.password_field :password_confirmation, autocomplete: "off", :class => "user-field" %>
       </div>
 
-      <div class="user-sign-wrapper">
-        <%= f.submit "Sign up", :class => "user-submit-button" %>
-      </div>
-
       <div class="user-cancel-button">
         <%= render "users/shared/links" %>
         <%= link_to "Cancel", root_url %>
       </div>
-
-
     </div>
+  </div>
 
-  <% end %>
-</div>
+  <div class="user-sign-wrapper">
+    <%= f.submit "Sign up", :class => "user-submit-button" %>
+  </div>
+<% end %>

@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_search
 
   def set_search
-    @search_tutors = Tutor.search(params[:q])
+    @search_users = User.search(params[:q])
   end
 
   protected
@@ -16,13 +16,13 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) << [:title, :middle_name, :gender, :postcode, 
     													:house_number, :house_name, :flat_number, :street, 
     													:address_line_two, :town, :county, :marital_status,
-                                                        :nationality, :mobile_phone, :home_phone,
-                                                        :work_phone, :first_name, :last_name]
+                              :nationality, :mobile_phone, :home_phone,
+                              :work_phone, :first_name, :last_name, :avatar]
     
     devise_parameter_sanitizer.for(:sign_up) << [:title, :middle_name, :gender, :postcode, 
     													:house_number, :house_name, :flat_number, :street, 
     													:address_line_two, :town, :county, :marital_status,
-                                                        :nationality, :mobile_phone, :home_phone, 
-                                                        :work_phone, :first_name, :last_name]
+                              :nationality, :mobile_phone, :home_phone, 
+                              :work_phone, :first_name, :last_name]
   end
 end

@@ -4,27 +4,7 @@ class TutorsController < ApplicationController
   respond_to :html
 
   def index
-    @location = params[:location] #value is used by geocoder gem
-    @search_tutors = Tutor.near(@location, 5).ransack(params[:q]) #looks for Tutor within 5km radius by geocoder
-    @tutor_less_than_one = Tutor.near(@location, 5).length < 1 # checks if any Tutors within specified location
-
-    if !@location.present? && !params[:q]
-      @tutors = Tutor.all
-    elsif !@location.present? && params[:q]
-      @ransack = Tutor.ransack(params[:q])
-      @tutors = @ransack.result(distinct: true)
-    elsif !@tutor_less_than_one #&& (params[:q] == "Vitalijus")#Tutor.where(name: params[:q])
-      @tutors = @search_tutors.result(distinct: true)
-    else
-      @tutors = Tutor.all
-    end
-
-    search_tutor(@tutors)
-    respond_with(@tutors)
-  end
-
-  def show
-    respond_with(@tutor)
+    @tutors = Tutor.all
   end
 
   def new
@@ -37,6 +17,7 @@ class TutorsController < ApplicationController
 
   def create
     @tutor = Tutor.new(tutor_params)
+    current_user.tutors << @tutor
     @tutor.save
     respond_with(@tutor)
   end

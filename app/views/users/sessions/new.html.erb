@@ -1,9 +1,9 @@
-<div id="user-form-wrapper">
-  <h2 id="user-form-heading">
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div id="user-form-wrapper">
+  
+  <!--<h2 id="user-form-heading">
     <%= image_tag "heading-2-500x200.jpg" %>
-  </h2>
-
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  </h2>-->
 
     <div id="user-form-fields">
       <div class="user-field-wrapper">
@@ -28,16 +28,15 @@
 	    </div>
 	  <% end -%>
 
-      <div class="user-sign-wrapper">
-        <%= f.submit "Sign in", :class => "user-submit-button" %>
-      </div>
-
       <div class="user-cancel-button">
         <%= render "users/shared/links" %>
         <%= link_to "Cancel", root_url %>
       </div>
     </div>
+  </div>
 
-  <% end %>
-</div>
+  <div class="user-sign-wrapper">
+    <%= f.submit "Sign in", :class => "user-submit-button" %>
+  </div>
+<% end %>
 

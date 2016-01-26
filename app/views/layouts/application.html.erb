@@ -38,10 +38,8 @@
         </div>
 
         <div class="search-tutor">
-          <%= search_form_for @search_tutors do |f| %>
-            <%= text_field_tag :location, params[:location], :class => "search-field", :placeholder => "Search in your area...", :autocomplete => false %>
-            <!--<%= f.select :name_cont, ["Vitalijus", "Tomas", "Eligijus"], :prompt => "Select a name" %>
-            <%= f.submit "Search", :class => "search-button" %>-->
+          <%= search_form_for @search_users do |f| %>
+            <%= text_field_tag :location, params[:location], :class => "search-field", :placeholder => "Search in your area..." %>
           <% end %>
         </div>
       </div>
@@ -51,10 +49,37 @@
           Tutors
         <% end %>
 
-          <%= link_to new_user_registration_path, :class => "nav-link", data: { no_turbolink: true } do %>  New tutor
-            <!--<div class="nav-link-triangle">
-              <%= image_tag "triangle.png", width: 20 %>
-            </div>-->
+        <% if user_signed_in? %>
+          <%= link_to new_tutor_path, :class => "nav-link", data: { no_turbolink: true } do %>
+            New Tutor
+          <% end %>
+
+          <div class="nav-link user-panel">
+            <%= current_user.first_name %> 
+            <div class="user-setting-panel">
+              <%= link_to user_path(current_user), data: { no_turbolink: true } do %>
+                <div class="user-setting-panel-link">
+                  Profile
+                </div>
+              <% end %>
+
+              <%= link_to edit_user_registration_path, data: { no_turbolink: true } do %>
+                <div class="user-setting-panel-link">
+                  Settings
+                </div>
+              <% end %>
+              
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <div class="user-setting-panel-link">
+                  Sign out
+                </div>
+              <% end %>
+            </div>
+          </div>
+
+        <% else %>
+
+          <%= link_to new_user_registration_path, :class => "nav-link", data: { no_turbolink: true } do %>  Sign up
           <% end %>
 
           <%= link_to new_user_session_path, :class => "nav-link", data: { no_turbolink: true } do %>
@@ -63,6 +88,7 @@
               <%= image_tag "triangle.png", width: 20 %>
             </div>-->
           <% end %>
+        <% end %>
       </div>
     </nav>
   </header>

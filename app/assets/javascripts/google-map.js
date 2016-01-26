@@ -1,4 +1,4 @@
-function gmap_show(tutor) {
+function gmap_show(user) {
   map = Gmaps.build('Google');
   map.buildMap({ provider: {  scaleControl: false, // Set to false to hide scale
                               streetViewControl: false, // Set to disable to hide street view
@@ -17,7 +17,7 @@ function gmap_show(tutor) {
                               maxZoom: 17 // Maximum soom level allowed (0-20)
                             }, internal: {id: 'map'}},function(){
 
-    var points = tutor;
+    var points = user;
     var markers = map.addMarkers(points);
     map.bounds.extendWith(markers);
     map.fitMapToBounds();

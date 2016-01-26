@@ -6,8 +6,8 @@ class UserTest < ActiveSupport::TestCase
     @user ||= User.new
   end
 
-  def test_valid
-    assert user.valid?
+  def test_address
+    assert "37A Ellerton Road, Dagenham, Essex, RM94HX, United Kingdom", @user.address
   end
 
 end

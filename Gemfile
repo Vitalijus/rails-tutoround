@@ -6,7 +6,7 @@ gem 'rails', '4.0.8'
 # Use postgresql as the database for Active Record
 gem 'pg'
 
-# Tiny, fast & funny HTTP server
+# Tiny, fast HTTP server
 gem 'thin'
 
 # Complete Ruby geocoding solution
@@ -17,6 +17,12 @@ gem 'gmaps4rails'
 
 # Ransack enables the creation advanced search forms Rails
 gem 'ransack'
+
+#The CarrierWave GEM should be loaded before the Cloudinary GEM
+gem 'carrierwave' 
+
+# Image management in the cloud
+gem 'cloudinary'
 
 # Haml-rails provides Haml generators for Rails
 gem "haml-rails", "~> 0.9"

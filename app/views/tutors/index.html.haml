@@ -14,18 +14,19 @@
   :javascript
     $(document).ready(function(){
       var tutor = #{@markers.to_json};   // pass ruby variable to javascript
-      gmap_show(tutor);    // init show map for company card (only print marker)
+      gmap_show(tutor);                  // init show map for company card (only print marker)
     });
 
 #tutor-list
   %ul
     - @tutors.each do |tutor|
-      %li
-        = tutor.name  
-        = tutor.surname
-        = tutor.price_per_hour
-        = tutor.avatar
-        = tutor.subject
-        = tutor.tutoring_type
-        = tutor.availability
+      = link_to tutor_path(tutor) do
+        %li
+          = image_tag tutor.avatar_url(:avatar)
+          = tutor.name  
+          = tutor.surname
+          = tutor.price_per_hour
+          = tutor.subject
+          = tutor.tutoring_type
+          = tutor.availability
 
