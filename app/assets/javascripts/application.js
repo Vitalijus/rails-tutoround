@@ -14,9 +14,9 @@
 //= require jquery_ujs
 //= require underscore
 //= require gmaps/google
+//= require jquery.geocomplete
 //= require turbolinks
 //= require_tree .
-//= require jquery.geocomplete
 
 // GEOCOMPLETE
 $(document).ready(function() {

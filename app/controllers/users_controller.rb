@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 	    @users = @search_users.result(distinct: true).includes(:tutors)
 
 	    # if user does not specify location he gets a notice
-	    if @location.empty?
+	    if !@location.present?
 	      	redirect_to :back, notice: "Please specify you location in search field."
 
 	     # if less than one User within specified location and distance gets notice
