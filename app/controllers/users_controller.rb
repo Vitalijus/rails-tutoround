@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
 	    # if user does not specify location he gets a notice
 	    if !@location.present?
-	      	redirect_to :back, notice: "Please specify you location in search field."
+	      	redirect_to root_url, notice: "Please specify you location in search field."
 
 	     # if less than one User within specified location and distance gets notice
 	    elsif @user_less_than_one
