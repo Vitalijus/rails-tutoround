@@ -13,16 +13,14 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:account_update) << [:title, :middle_name, :gender, :postcode, 
-    													:house_number, :house_name, :flat_number, :street, 
-    													:address_line_two, :town, :county, :marital_status,
-                              :nationality, :mobile_phone, :home_phone,
-                              :work_phone, :first_name, :last_name, :avatar]
+    devise_parameter_sanitizer.for(:account_update) << [:title, :middle_name, :gender, :postcode,
+                                                        :street, :town, :mobile_phone, :first_name, 
+                                                        :last_name, :avatar, :about_me,
+                                                        :available_private, :available_online,
+                                                        :available_group]
     
-    devise_parameter_sanitizer.for(:sign_up) << [:title, :middle_name, :gender, :postcode, 
-    													:house_number, :house_name, :flat_number, :street, 
-    													:address_line_two, :town, :county, :marital_status,
-                              :nationality, :mobile_phone, :home_phone, 
-                              :work_phone, :first_name, :last_name]
+    devise_parameter_sanitizer.for(:sign_up) << [:title, :postcode, :street,
+                                                 :town, :first_name, :last_name, :about_me,
+                                                 :available_private, :available_online, :available_group]
   end
 end

@@ -6,7 +6,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   process :tags => ['avatar']
 
   version :avatar do
-     process :resize_to_fill => [75, 90]
+     process :resize_to_fill => [65, 75]
   end
 
   def extension_white_list

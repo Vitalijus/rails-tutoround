@@ -58,9 +58,7 @@ class TutorsController < ApplicationController
     end
 
     def tutor_params
-      params.require(:tutor).permit(:name, :surname, :postcode, :latitude, :longitude,
-                                    :house_number, :street, :city, :state, :country,
-                                    :price_per_hour, :avatar, :about_me, :qualification,
-                                    :availability, :experience, :tutoring_type, :subject)
+      params.require(:tutor).permit(:price_per_hour, :tutoring_type, :subject, :subject_keyword,
+                                    :experience_in_years, :subject_description)
     end
 end

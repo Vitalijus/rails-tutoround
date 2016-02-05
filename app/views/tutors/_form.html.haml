@@ -10,23 +10,20 @@
       = f.label :price_per_hour
       = f.text_field :price_per_hour
     .field
-      = f.label :about_me
-      = f.text_field :about_me
-    .field
-      = f.label :qualification
-      = f.text_field :qualification
-    .field
-      = f.label :availability
-      = f.text_field :availability
-    .field
-      = f.label :experience
-      = f.text_field :experience
-    .field
       = f.label :tutoring_type
       = f.text_field :tutoring_type
     .field
       = f.label :subject
       = f.text_field :subject
+    .field
+      = f.label :subject_keyword
+      = f.text_field :subject_keyword
+    .field
+      = f.label :experience_in_years
+      = f.text_field :experience_in_years
+    .field
+      = f.label :subject_description
+      = f.text_area :subject_description
   .new-tutor-submit
     = f.submit 'Save', :class => "new-tutor-button"
 

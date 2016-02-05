@@ -1,18 +1,4 @@
 #google-map-wrapper
-  .search-filter-box
-    = search_form_for @search_users do |f|
-      = text_field_tag :location, params[:location], :class => "hide-search"
-      = f.select :email_cont, ["vitalij.desuk@gmail.com"], :prompt => "Select a name"
-      = f.submit "Search", :class => "search-button"
-
-    .search-filter-close 
-      = image_tag "arrow-up.png", width: 18
-  .search-filter-header 
-    Apply search filter:
-    .search-filter-open
-      Filter
-      = image_tag "arrow-down.png", width: 15
-
   #map
 
 - content_for :google_map do
@@ -23,9 +9,76 @@
     });
 
 #user-list
+  #notice= notice
   %ul
     - @users.each do |user|
       %li
-        = link_to user_path(user) do
-          = image_tag user.avatar_url(:avatar)
-          = user.email
+        .user-list-content
+
+          .user-list-info
+            .user-list-image
+              = image_tag user.avatar_url(:avatar)
+
+            .user-list-data
+              .user-list-data-number
+                10$
+              .user-list-data-text
+                average
+
+            .user-list-data
+              .user-list-data-number
+                = user.tutors.count
+              .user-list-data-text
+                subjects
+
+            .user-list-data
+              - if params[:location]
+                .user-list-data-number
+                  = user.distance.round(2) 
+                  | km
+                .user-list-data-text
+                  distance
+              - else
+                "N/A"
+
+            .user-list-data
+              .user-list-data-email
+                = link_to root_url, data: { no_turbolink: true } do
+                  %span.icon-email
+
+        .user-about-me
+          = truncate("#{user.about_me}", length: 250, separator: ' ')
+
+        .user-list-subject-keywords
+          - user.tutors.each do |tutor|
+            .user-list-subject-keyword
+              = tutor.subject_keyword
+
+
+#search-filter-wrapper
+  .search-filter-title 
+    Apply search filter:
+    
+  .search-filter-open
+    Filter
+    = image_tag "arrow-up.png", width: 15
+
+  .search-filter-panel
+    = search_form_for @search_users do |f|
+      = hidden_field_tag :location, params[:location]
+      = f.text_field :tutors_subject_keyword_cont
+      = f.search_field :tutors_price_per_hour_cont
+      = select_tag :distance, options_for_select(["5", "10", "15", "20", "25", "30", "35", "40"], params[:distance])
+      = f.submit "Search", :class => "search-button"
+
+    distance:
+    = params[:distance]
+    %br
+    location:
+    = params[:location]
+    %br
+    Keyword:
+    = params[:user_id]
+
+    .search-filter-close 
+      = image_tag "arrow-down.png", width: 18

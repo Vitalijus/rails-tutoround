@@ -1,11 +1,14 @@
 %p#notice= notice
 
 %p
-  %b Name:
-  = @tutor.name
+  %b Price:
+  = @tutor.price_per_hour
 %p
-  %b Surname:
-  = @tutor.surname
+  %b Tutoring type:
+  = @tutor.tutoring_type
+%p
+  %b Subject:
+  = @tutor.subject
 
 = link_to 'Edit', edit_tutor_path(@tutor)
 \|

@@ -1,33 +1,67 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!, only: [:edit]
 	respond_to :html
+
 	def index
 		# value is used by geocoder gem
 		@location = params[:location]
+		@distance = params[:distance]
 
-		# looks for User within 5km radius by geocoder
-	    @search_users = User.near(@location, 5).ransack(params[:q]) 
+		# checks if any User within specified location
+	    @user_less_than_one = User.near(@location, @distance).length < 1 
 
-	    # checks if any User within specified location
-	    @user_less_than_one = User.near(@location, 5).length < 1 
+		# looks for User within certain radius by geocoder
+		# radius is specified by hidden field in search form
+	    @search_users = User.near(@location, @distance).ransack(params[:q])
 
-	    if !@location.present? && !params[:q]
-	      @users = User.all
-	    elsif !@location.present? && params[:q]
-	      @ransack = User.ransack(params[:q])
-	      @users = @ransack.result(distinct: true)
-	    elsif !@user_less_than_one
-	      @users = @search_users.result(distinct: true)
+	    # ransack search filters results
+	    # ransack multi-model search
+	    @users = @search_users.result(distinct: true).includes(:tutors)
+
+	    # if user does not specify location he gets a notice
+	    if @location.empty?
+	      	redirect_to :back, notice: "Please specify you location in search field."
+
+	     # if less than one User within specified location and distance gets notice
+	    elsif @user_less_than_one
+	    	redirect_to :back, notice: "Search successfully completed without new results. Try another settings."
+
 	    else
-	      @users = User.all
+	    	search_user(@users)
 	    end
 
-	    search_user(@users)
-	    respond_with(@users)
+	    # if less than one User within specified location and distance gets notice
+	    #if @user_less_than_one
+	    #	redirect_to :back, notice: "We could not find any records around specified location" 
+	    #end
+
+	    # if less than one User within specified location and distance gets notice
+	    #if @user_less_than_one #params[:q].blank? #
+	    	#@user_less_than_one
+	    #	redirect_to :back, notice: "We could not find any results around specified location"
+	    	#@users = User.all
+	    	#search_user(@users)
+	    #end
+
+	    #if !@location.present? && params[:q]
+	    #  @ransack = User.ransack(params[:q])
+	    #  @users = @ransack.result(distinct: true).includes(:tutors)
+	    #elsif !@user_less_than_one
+	    #  @users = @search_users.result(distinct: true).includes(:tutors)
+	    #else
+	    #  redirect_to :back, notice: 'Search successfully completed without new results. Try another settings.'
+	    #end
+
+	    #search_user(@users)
+	    #respond_with(@users)
 	end
 
 	def show
 		@user = User.find(params[:id])
+	end
+
+	def landing_page
+		@users = User.all
 	end
 
 	private

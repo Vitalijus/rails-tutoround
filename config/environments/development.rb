@@ -9,6 +9,18 @@ Mbfund::Application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
+  # Change mail delvery to either :smtp, :sendmail, :file, :test
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "http://localhost:3000",
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: "vitalij.desuk@gmail.com",
+    password: "g110272a"
+  }
+
   # Ensure you have defined default url options in your environments files. Here
   # is an example of default_url_options appropriate for a development environment
   # in config/environments/development.rb

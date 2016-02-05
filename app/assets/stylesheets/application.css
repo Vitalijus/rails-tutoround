@@ -116,13 +116,14 @@ p {
 }
 
 .search-tutor {
+	width: calc(100% - 280px); /* 235px logo + 45px search icon*/
 	height: 100%;
 	line-height: 50px;
 	float: left;
 }
 
 .search-field {
-	width: 300px;
+	width: 100%;
 	height: 65px;
 	padding: 14px;
 	border: 0;
@@ -133,7 +134,7 @@ p {
 }
 
 .search-icon {
-	width: 40px;
+	width: 45px;
 	height: 65px;
 	float: left;
 	position: relative;
@@ -158,17 +159,19 @@ p {
 
 /* Navigation links */
 
-#nav-links {
+ul#nav-links {
 	width: 40%;
 	float: right;
 	height: 100%;
 }
 
-.nav-link {
+ul#nav-links li,
+.nav-current-link,
+#nav-links a {
 	width: 33.333333%;
 	float: left;
-	position: relative;
 	height: 100%;
+	position: relative;
 	line-height: 65px;
 	text-align: center;
 	font-weight: 500;
@@ -184,35 +187,41 @@ p {
   	transition: background-color 150ms linear;
 }
 
-.nav-link:hover {
-	background-color: #FF8B6B; 
+ul#nav-links li img {
+	position: absolute;
+	bottom: -10px;
+	left: 50%;
+	margin-left: -12px;
+}
+
+#nav-links a {
+	width: 100%;
+}
+
+#nav-links li:hover {
+	background-color: #FF8B6B;
 }
 
 .nav-current-link {
+	width: 100%;
 	background-color: #FF8B6B;
+}
+
+.user-list-triangle {
+
 }
 
 /* end */
 
 /* User setting panel */
 
-.nav-link.user-panel:hover {
+ul#nav-links li.user-open-panel:hover {
 	background-color: #25A9DF;
 	cursor: pointer;
 }
 
-.user-setting-panel {
-	width: 100%;
-	position: absolute;
-	bottom: -195px;
-	color: #000;
-	display: none;
-	background-color: #fff;
-}
-
-a .user-setting-panel-link {
-	color: #fff;
-	background-color: #25A9DF;
+li.user-open-panel {
+	position: relative;
 
 	-webkit-transition: background-color 150ms linear;
   	-moz-transition: background-color 150ms linear;
@@ -221,8 +230,86 @@ a .user-setting-panel-link {
   	transition: background-color 150ms linear;
 }
 
-.user-setting-panel-link:hover {
+.user-setting-panel {
+	width: 100%;
+	position: absolute;
+	bottom: -195px;
+	color: #000;
+	display: none;
+	background-color: #25A9DF;
+}
+
+.user-setting-panel a {
+	width: 100%;
+	height: 65px;
+
+	-webkit-transition: background-color 150ms linear;
+  	-moz-transition: background-color 150ms linear;
+  	-o-transition: background-color 150ms linear;
+  	-ms-transition: background-color 150ms linear;
+  	transition: background-color 150ms linear;
+}
+
+.user-setting-panel a:hover {
 	background-color: #FF8B6B;
+}
+
+/* end */
+
+/* Google map */
+
+#google-map-wrapper {
+	width: 60%;
+	float: left;
+	height: calc(100% - 65px);
+	position: fixed;
+	top: 65px;
+	z-index: 9999;
+}
+
+#map {
+	width: 100%;
+	height: 100%;
+}
+
+/* Geocomplete, search location autocomplete */
+
+.pac-container {
+	background-color: #253939;
+	color: #fff;
+	border: 0;
+	z-index: 999999;
+
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+}
+
+.pac-container:after {
+    /* Disclaimer: not needed to show 'powered by Google' if also a Google Map is shown */
+
+    background-image: none !important;
+    height: 0px;
+    padding: 0;
+    margin: 0;
+}
+
+.pac-item {
+	padding: 8px 10px;
+	border: 0;
+}
+
+.pac-item:hover {
+	color: #444;
+}
+
+.pac-item-query {
+	font-size: 14px;
+	color: #f9f9f9;
+}
+
+.pac-item:hover .pac-item-query {
+	color: #444;
 }
 
 /* end */

@@ -16,14 +16,23 @@
 //= require gmaps/google
 //= require turbolinks
 //= require_tree .
+//= require jquery.geocomplete
+
+// GEOCOMPLETE
+$(document).ready(function() {
+  // Subscribe to events of the geocode plugin
+  $("#geo-input").geocomplete().bind("geocode:result", function(event, result){
+    $('.search-form').submit();
+  });
+});  
 
 // USER NAV PANEL
 $(document).ready(function() {
-  $(".nav-link.user-panel").mouseenter(function() {
+  $(".user-open-panel").mouseenter(function() {
     $(".user-setting-panel").fadeIn(250);
   });
 
-  $(".nav-link.user-panel").mouseleave(function() {
+  $(".user-open-panel").mouseleave(function() {
     $(".user-setting-panel").fadeOut(250);
   });
 });
@@ -32,19 +41,18 @@ $(document).ready(function() {
 // SEARCH FILTER 
 $(document).ready(function() {
     $('.search-filter-open').click(function() {
-      $(".search-filter-box").animate({top: 0}, 250).show();
+      $(".search-filter-panel").animate({bottom: 0}, 250).show();
     });
 
     $('.search-filter-close').click(function() {
-      $(".search-filter-box").animate({top: -230}, 250);
+      $(".search-filter-panel").animate({bottom: -230}, 250);
     });
 });
 
-// CURRENT LINK HIGHLIGHT
+// USER LIST INFO
+
 $(document).ready(function() {
-  $("#nav-links a[href]").each(function() {
-    if (this.href == window.location.href) {
-      $(this).addClass("nav-current-link");
-    }
+  $(".push-button").click(function() {
+    $(this).css({"height" : "125px"});
   });
 });

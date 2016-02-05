@@ -1,0 +1,89 @@
+= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+
+  #edit-user-wrapper
+    = devise_error_messages!
+
+    .field
+      = f.label :title
+      = f.text_field :title
+
+    .field
+      = f.label :first_name
+      = f.text_field :first_name
+
+    .field
+      = f.label :middle_name
+      = f.text_field :middle_name
+
+    .field
+      = f.label :last_name
+      = f.text_field :last_name
+
+    .field
+      = f.label :gender
+      = f.select :gender, ["Male", "Female"]
+
+    .field
+      = f.label :town
+      = f.text_field :town
+
+    .field
+      = f.label :street
+      = f.text_field :street
+
+    .field
+      = f.label :postcode
+      = f.text_field :postcode
+
+    .field
+      = f.label :mobile_phone
+      = f.text_field :mobile_phone
+
+    .field
+      = f.label :about_me
+      = f.text_area :about_me
+
+    .field
+      = f.label :available_online
+      = f.check_box :available_online
+
+    .field
+      = f.label :available_private
+      = f.check_box :available_private
+
+    .field
+      = f.label :available_group
+      = f.check_box :available_group
+
+    .field
+      = f.label :avatar
+      = f.file_field :avatar
+
+    .field
+      = f.label :email
+      = f.email_field :email, autofocus: true
+  
+    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+      Currently waiting confirmation for: 
+      = resource.unconfirmed_email
+
+    .field
+      = f.label :password 
+      (leave blank if you don't want to change it)
+      = f.password_field :password, autocomplete: "off"
+
+    .field
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation, autocomplete: "off"
+
+    .field
+      = f.label :current_password
+      (we need your current password to confirm your changes)
+      = f.password_field :current_password, autocomplete: "off"
+
+    
+
+  .edit-user-submit
+    = f.submit "Update", :class => "edit-user-button"
+
+= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete

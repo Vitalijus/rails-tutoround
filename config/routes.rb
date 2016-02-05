@@ -1,5 +1,6 @@
 Mbfund::Application.routes.draw do
   
+  get "emails/create"
   resources :tutors
   devise_for :users
   resources :users, only: [:index, :show]
@@ -8,7 +9,7 @@ Mbfund::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'users#index'
+  root 'users#landing_page'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

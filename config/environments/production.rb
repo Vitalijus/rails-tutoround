@@ -10,6 +10,18 @@ Mbfund::Application.configure do
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
 
+  # Change mail delvery to either :smtp, :sendmail, :file, :test
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "https://powerful-citadel-2016.herokuapp.com/",
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: "vitalij.desuk@gmail.com",
+    password: "g110272a"
+  } 
+  
   # In production, :host should be set to the actual host of your application.
   config.action_mailer.default_url_options = { host: "https://powerful-citadel-2016.herokuapp.com/", port: 3000 }
 

@@ -22,11 +22,7 @@
     - @tutors.each do |tutor|
       = link_to tutor_path(tutor) do
         %li
-          = image_tag tutor.avatar_url(:avatar)
-          = tutor.name  
-          = tutor.surname
           = tutor.price_per_hour
           = tutor.subject
-          = tutor.tutoring_type
-          = tutor.availability
+          = tutor.tutoring_type   
 

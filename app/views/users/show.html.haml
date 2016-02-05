@@ -1,1 +1,22 @@
-show hello
+#user-show-wrapper
+  .user-show-profile
+    = image_tag @user.avatar_url(:avatar)
+    = @user.title
+    = @user.first_name
+    = @user.last_name
+    = @user.about_me
+    
+
+  - @user.tutors.each do |tutor|
+    = link_to tutor_path(tutor) do
+      .user-show-subject
+        = tutor.subject 
+        %br
+        = tutor.price_per_hour 
+        %br
+        = tutor.experience_in_years 
+        %br
+        = tutor.subject_keyword
+        %br
+        = tutor.subject_description
+        %br
