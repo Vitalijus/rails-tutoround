@@ -15,6 +15,7 @@
 //= require underscore
 //= require gmaps/google
 //= require jquery.geocomplete
+//= require test
 //= require turbolinks
 //= require_tree .
 
