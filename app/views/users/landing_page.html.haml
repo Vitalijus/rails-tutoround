@@ -3,4 +3,18 @@
     = link_to root_url do
       = image_tag "logo-landing.png"
 
-%p#notice= notice
+  - if current_page?(root_url) 
+    = search_form_for @search_users do |f|
+
+      .landing-page-search
+        = text_field_tag :location, params[:location], :id => 'geo-input', :class => "search-field", :placeholder => "Search in your area..."
+
+      .landing-page-search
+        = f.text_field :tutors_subject_keyword_cont, :class => "search-field landing-page", :placeholder => "Keyword"
+      
+      = hidden_field_tag :distance, "#{10}"
+
+      %p#notice= notice
+      
+      .landing-page-search-btn
+        = f.submit "Search", class: "landing-page-submit"

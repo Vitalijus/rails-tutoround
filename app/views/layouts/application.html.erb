@@ -24,15 +24,6 @@
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,500|Lato:300,400|Montserrat:400,700|Merriweather+Sans:400,700,800,300' rel='stylesheet' type='text/css'> <!-- Body font & Navbar font -->
 </head>
 <body>
-<% if current_page?(root_url) %>
-  <%= search_form_for @search_users do |f| %>
-    <%= text_field_tag :location, params[:location], :id => 'geo-input', :class => "search-field", :placeholder => "Search in your area..." %>
-    <%= f.text_field :tutors_subject_keyword_cont, :class => "search-field", :placeholder => "Keyword" %>
-    <%= hidden_field_tag :distance, "#{10}" %>
-    <%= f.submit "Search" %>
-  <% end %>
-<% end %>
-
 
 <% unless current_page?(root_url) %>
   <header id="header">

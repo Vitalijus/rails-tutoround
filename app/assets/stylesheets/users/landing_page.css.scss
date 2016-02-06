@@ -3,8 +3,6 @@
 	margin: auto;
 	margin-top: 85px;
 	position: relative;
-	background-color: #253838;
-	padding: 20px;
 }
 
 .landing-logo {
@@ -12,4 +10,30 @@
 	top: -57px;
 	left: 50%;
 	margin-left: -115px;
+}
+
+.landing-page-search {
+	width: 50%;
+	float: left;
+}
+
+.search-field.landing-page {
+	border-left: 1px solid #666;
+}
+
+.landing-page-search-btn {
+	width: 100%;
+	background-color: #25A9DF;
+}
+
+.landing-page-submit {
+	width: 100%;
+	cursor: pointer;
+	text-align: center;
+	background-color: #25A9DF;
+	padding: 20px;
+	font-family: 'Montserrat', sans-serif;
+	color: #fff;
+	font-size: 16px;
+	border: 0;
 }
