@@ -1,3 +1,26 @@
+#bg-img
+
+#landing-page-header
+  - if user_signed_in?
+    = link_to new_tutor_path, data: { no_turbolink: true } do
+      .landing-page-link.user-signed
+        Add subject
+    
+    = link_to user_path(current_user), data: { no_turbolink: true } do
+      .landing-page-link
+        My profile
+      
+  - else
+    = link_to new_user_registration_path, data: { no_turbolink: true } do
+      .landing-page-link.user-not-signed
+        Sign up
+      
+    = link_to new_user_session_path, data: { no_turbolink: true } do
+      .landing-page-link
+        Sign in
+      
+
+
 #landing-page-wrapper
   .landing-logo
     = link_to root_url do
@@ -7,14 +30,19 @@
     = search_form_for @search_users do |f|
 
       .landing-page-search
-        = text_field_tag :location, params[:location], :id => 'geo-input', :class => "search-field", :placeholder => "Search in your area..."
+        = text_field_tag :location, params[:location], :id => 'geo-input', :class => "search-field", :placeholder => "Find tutors by typing postcode, city, address..."
 
       .landing-page-search
-        = f.text_field :tutors_subject_keyword_cont, :class => "search-field landing-page", :placeholder => "Keyword"
+        = f.text_field :tutors_subject_keyword_cont, :class => "search-field landing-page", :placeholder => "What you want to learn?"
       
       = hidden_field_tag :distance, "#{10}"
 
       %p#notice= notice
-      
+
       .landing-page-search-btn
         = f.submit "Search", class: "landing-page-submit"
+
+-##landing-page-slider
+  = image_tag "banner.jpg"
+
+#landing-page-slider

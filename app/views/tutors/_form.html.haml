@@ -5,6 +5,7 @@
       %ul
         - @tutor.errors.full_messages.each do |msg|
           %li= msg
+          
   #new-tutor-wrapper
     .field
       = f.label :price_per_hour

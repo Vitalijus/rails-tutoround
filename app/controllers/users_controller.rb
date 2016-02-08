@@ -29,31 +29,6 @@ class UsersController < ApplicationController
 	    else
 	    	search_user(@users)
 	    end
-
-	    # if less than one User within specified location and distance gets notice
-	    #if @user_less_than_one
-	    #	redirect_to :back, notice: "We could not find any records around specified location" 
-	    #end
-
-	    # if less than one User within specified location and distance gets notice
-	    #if @user_less_than_one #params[:q].blank? #
-	    	#@user_less_than_one
-	    #	redirect_to :back, notice: "We could not find any results around specified location"
-	    	#@users = User.all
-	    	#search_user(@users)
-	    #end
-
-	    #if !@location.present? && params[:q]
-	    #  @ransack = User.ransack(params[:q])
-	    #  @users = @ransack.result(distinct: true).includes(:tutors)
-	    #elsif !@user_less_than_one
-	    #  @users = @search_users.result(distinct: true).includes(:tutors)
-	    #else
-	    #  redirect_to :back, notice: 'Search successfully completed without new results. Try another settings.'
-	    #end
-
-	    #search_user(@users)
-	    #respond_with(@users)
 	end
 
 	def show
@@ -75,10 +50,10 @@ class UsersController < ApplicationController
         marker.infowindow "<h5><u>#{user_link}</u></h5> 
                          #<i>#{user.email}</i>"
         marker.picture({
-          url: view_context.image_path("marker.png"),
+          url: view_context.image_path("location.png"),
           #url: "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=Abvdfr|FF0000|000000",
-          width: 10,
-          height: 10,
+          width: 25,
+          height: 38,
           #rich_marker: "<div style: width: 25px; height: 25px; background-color: red;>Hello</div>"
           })
         marker.json({ link: "#{user_path(user)}"})

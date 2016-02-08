@@ -21,6 +21,8 @@ class ApplicationController < ActionController::Base
     
     devise_parameter_sanitizer.for(:sign_up) << [:title, :postcode, :street,
                                                  :town, :first_name, :last_name, :about_me,
-                                                 :available_private, :available_online, :available_group]
+                                                 :available_private, :available_online, :available_group,
+                                                 :latitude, :longitude, :formatted_address, :location,
+                                                 :city, :country]
   end
 end

@@ -25,7 +25,7 @@
 </head>
 <body>
 
-<% unless current_page?(root_url) %>
+<% unless current_page?(root_url) || current_page?(new_user_registration_path)%>
   <header id="header">
     <nav id="nav">
       <div class="nav-panel">
@@ -43,6 +43,7 @@
           <%= search_form_for @search_users, :class => "search-form" do |f| %>
             <%= text_field_tag :location, params[:location], :id => 'geo-input', :class => "search-field", :placeholder => "Search in your area..." %>
             <%= f.hidden_field :tutors_subject_keyword_cont %>
+            <%= f.hidden_field :tutors_price_per_hour_cont %>
             <%= hidden_field_tag :distance, "#{10}" %>
           <% end %>
         </div>

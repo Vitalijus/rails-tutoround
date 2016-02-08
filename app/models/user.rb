@@ -11,12 +11,14 @@ class User < ActiveRecord::Base
   	has_many :tutors, dependent: :destroy
     has_many :emails, dependent: :destroy
 
-  	# Geocoder geolocation
-  	geocoded_by :postcode
-  	after_validation :geocode, :if => :postcode_changed?
-
-  	# Aggregated string for geolocation
-  	#def address
-	 	#[street, postcode].compact.join(', ')
-  	#end
+  	# Geocoder reverse geolocation
+    validates :location, presence: true    
+    after_validation :reverse_geocode 
+    reverse_geocoded_by :latitude, :longitude do |obj, results|
+      if geo = results.first
+        obj.city  = geo.city
+        obj.location = geo.address
+        obj.country = geo.country
+      end
+    end
 end

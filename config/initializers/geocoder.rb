@@ -16,8 +16,8 @@ Geocoder.configure(
   # :always_raise => [],
 
   # calculation options
-  :units     => :km,       # :km for kilometers or :mi for miles
-  # :distances => :linear    # :spherical or :linear
+  :units     => :mi,       # :km for kilometers or :mi for miles
+  # :distances => :spherical,    # :spherical or :linear
 
   # a solution to the query limit on shared IP systems like Heroku / Google console API
   #:api_key => ENV['AIzaSyB07AvKa1-lC0FcTd5EPNCesAoWID0aXlc'],

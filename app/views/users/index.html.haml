@@ -9,7 +9,17 @@
     });
 
 #user-list
+  .user-list-info-box
+    = pluralize(@users.count, "tutor")
+    in
+    %b
+      = params[:location]
+    within
+    = params[:distance]
+    mi radius
+
   #notice= notice
+
   %ul
     - @users.each do |user|
       %li
@@ -35,7 +45,7 @@
               - if params[:location]
                 .user-list-data-number
                   = user.distance.round(2) 
-                  | km
+                  | mi
                 .user-list-data-text
                   distance
               - else
@@ -66,19 +76,10 @@
   .search-filter-panel
     = search_form_for @search_users do |f|
       = hidden_field_tag :location, params[:location]
-      = f.text_field :tutors_subject_keyword_cont
-      = f.search_field :tutors_price_per_hour_cont
+      = f.text_field :tutors_subject_keyword_cont, :placeholder => "Keyword"
+      = f.search_field :tutors_price_per_hour_cont, :placeholder => "Price"
       = select_tag :distance, options_for_select(["5", "10", "15", "20", "25", "30", "35", "40"], params[:distance])
       = f.submit "Search", :class => "search-button"
-
-    distance:
-    = params[:distance]
-    %br
-    location:
-    = params[:location]
-    %br
-    Keyword:
-    = params[:user_id]
 
     .search-filter-close 
       = image_tag "arrow-down.png", width: 18

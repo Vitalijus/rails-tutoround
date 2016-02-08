@@ -1,5 +1,54 @@
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %> 
-  <div id="user-form-wrapper">
+
+<div class="user-map-wrapper">
+  <div class="map-user-sign-up"></div>
+</div>
+
+
+
+
+<script>
+  $(document).ready(function(){
+
+    var options = {
+      map: ".map-user-sign-up",
+      mapOptions: {
+        maxZoom: 21,
+        minZoom: 14,
+        mapTypeControl: false,
+        scrollwheel: false,
+        streetViewControl: false
+      },
+      markerOptions: {
+        draggable: false,
+        icon: "http://localhost:3000/assets/location.png"
+      }
+    };
+
+    // start geocomplete
+    $(".location").geocomplete(options).bind("geocode:result", function(event, result){
+      $('#find').submit();
+      $(".map-user-sign-up").show();
+
+      // get the value of the result and put it where it is supposed to be
+      $('.latitude').val(result.geometry.location.lat());
+      $('.longitude').val(result.geometry.location.lng());
+
+      // resize map if div is hidden/none to show the map
+      var map = $(".location").geocomplete("map");
+      google.maps.event.trigger(map, "resize");
+      
+      // set map to center
+      map.setZoom(18);
+      map.setCenter(result.geometry.location);
+    });
+
+  });
+</script>
+
+
+
+<div id="user-form-wrapper">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %> 
     
     <div class="validation-errors" >
       <div id="error_explanation">
@@ -7,6 +56,10 @@
       </div>
     </div>
 
+    <div><%= f.label :location %>
+    <%= f.text_field :location, class: "location", placeholder: "Type in an address, post code or zip code" %></div>
+    <%= f.hidden_field :latitude, class: "latitude" %>
+    <%= f.hidden_field :longitude, class: "longitude" %>
     <div id="user-form-fields">
       <div class="user-field-wrapper">
         <div class="user-label">
@@ -22,30 +75,6 @@
         </div>
 
         <%= f.text_field :last_name, :class => "user-field" %>
-      </div>
-
-      <div class="user-field-wrapper">
-        <div class="user-label">
-          <%= f.label :postcode, "Postcode:" %>
-        </div>
-
-        <%= f.text_field :postcode, :class => "user-field" %>
-      </div>
-
-      <div class="user-field-wrapper">
-        <div class="user-label">
-          <%= f.label :street, "Street:" %>
-        </div>
-
-        <%= f.text_field :street, :class => "user-field" %>
-      </div>
-
-      <div class="user-field-wrapper">
-        <div class="user-label">
-          <%= f.label :town, "Town:" %>
-        </div>
-
-        <%= f.text_field :town, :class => "user-field" %>
       </div>
 
       <div class="user-field-wrapper">
@@ -77,9 +106,11 @@
         <%= link_to "Cancel", root_url %>
       </div>
     </div>
-  </div>
+  
 
   <div class="user-sign-wrapper">
     <%= f.submit "Sign up", :class => "user-submit-button" %>
   </div>
 <% end %>
+</div>
+
