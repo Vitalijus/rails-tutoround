@@ -44,17 +44,15 @@ class UsersController < ApplicationController
     def search_user(users)
       @users = users
       @markers = Gmaps4rails.build_markers(@users) do |user, marker|
-        user_link = view_context.link_to "#{user.email}", user_path(user)
+        #user_link = view_context.link_to "#{user.email}", user_path(user)
         marker.lat user.latitude
         marker.lng user.longitude
-        marker.infowindow "<h5><u>#{user_link}</u></h5> 
+        #marker.infowindow "<h5><u>#{user_link}</u></h5> 
                          #<i>#{user.email}</i>"
         marker.picture({
           url: view_context.image_path("location.png"),
-          #url: "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=Abvdfr|FF0000|000000",
           width: 25,
-          height: 38,
-          #rich_marker: "<div style: width: 25px; height: 25px; background-color: red;>Hello</div>"
+          height: 38
           })
         marker.json({ link: "#{user_path(user)}"})
       end

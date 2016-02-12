@@ -30,6 +30,9 @@ gem "haml-rails", "~> 0.9"
 # Authentication solution for Rails
 gem 'devise'
 
+# font-awesome-rails provides the Font-Awesome web fonts and stylesheets
+gem "font-awesome-rails"
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
 
@@ -59,6 +62,7 @@ end
 group :development, :test do
 	gem "minitest-rails"
 	gem "minitest-reporters"
+	gem "better_errors"
 end
 
 gem 'rails_12factor', group: :production

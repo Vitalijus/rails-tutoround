@@ -11,9 +11,11 @@ class User < ActiveRecord::Base
   	has_many :tutors, dependent: :destroy
     has_many :emails, dependent: :destroy
 
-  	# Geocoder reverse geolocation
+  	
     validates :location, presence: true    
     after_validation :reverse_geocode 
+
+    # Geocoder reverse geolocation
     reverse_geocoded_by :latitude, :longitude do |obj, results|
       if geo = results.first
         obj.city  = geo.city
@@ -21,4 +23,5 @@ class User < ActiveRecord::Base
         obj.country = geo.country
       end
     end
+    
 end

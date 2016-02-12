@@ -1,79 +1,38 @@
+<div class="user-form-header">
+  Where are you located?
 
-<div class="user-map-wrapper">
-  <div class="map-user-sign-up"></div>
+  <div class="user-form-header-small">
+    It's completely free to be a part of <span class="text-highlight">tutoround</span>
+  </div>
 </div>
 
-
-
-
-<script>
-  $(document).ready(function(){
-
-    var options = {
-      map: ".map-user-sign-up",
-      mapOptions: {
-        maxZoom: 21,
-        minZoom: 14,
-        mapTypeControl: false,
-        scrollwheel: false,
-        streetViewControl: false
-      },
-      markerOptions: {
-        draggable: false,
-        icon: "http://localhost:3000/assets/location.png"
-      }
-    };
-
-    // start geocomplete
-    $(".location").geocomplete(options).bind("geocode:result", function(event, result){
-      $('#find').submit();
-      $(".map-user-sign-up").show();
-
-      // get the value of the result and put it where it is supposed to be
-      $('.latitude').val(result.geometry.location.lat());
-      $('.longitude').val(result.geometry.location.lng());
-
-      // resize map if div is hidden/none to show the map
-      var map = $(".location").geocomplete("map");
-      google.maps.event.trigger(map, "resize");
-      
-      // set map to center
-      map.setZoom(18);
-      map.setCenter(result.geometry.location);
-    });
-
-  });
-</script>
-
-
-
 <div id="user-form-wrapper">
+
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %> 
-    
+
+    <%= f.text_field :location, class: "location search-field", placeholder: "Type in an address, post code or zip code" %>
+    <%= f.hidden_field :latitude, class: "latitude" %>
+    <%= f.hidden_field :longitude, class: "longitude" %>
+
+    <div class="user-map-wrapper">
+      <div class="map-user-sign-up"></div>
+      <div class="user-map-correct-location">
+        Is this an accurate location? If not, please enter a more specific location above.
+      </div>
+    </div>
+
     <div class="validation-errors" >
       <div id="error_explanation">
         <%= devise_error_messages! %>
       </div>
     </div>
 
-    <%= f.text_field :location, class: "location", placeholder: "Type in an address, post code or zip code" %>
-    <%= f.hidden_field :latitude, class: "latitude" %>
-    <%= f.hidden_field :longitude, class: "longitude" %>
-    <div id="user-form-fields">
       <div class="user-field-wrapper">
         <div class="user-label">
           <%= f.label :first_name, "Name:" %>
         </div>
 
         <%= f.text_field :first_name, :class => "user-field" %>
-      </div>
-
-      <div class="user-field-wrapper">
-        <div class="user-label">
-          <%= f.label :last_name, "Surname:" %>
-        </div>
-
-        <%= f.text_field :last_name, :class => "user-field" %>
       </div>
 
       <div class="user-field-wrapper">
@@ -104,12 +63,49 @@
         <%= render "users/shared/links" %>
         <%= link_to "Cancel", root_url %>
       </div>
-    </div>
   
 
-  <div class="user-sign-wrapper">
-    <%= f.submit "Sign up", :class => "user-submit-button" %>
-  </div>
-<% end %>
+    <div class="user-sign-wrapper">
+      <%= f.submit "Sign up", :class => "user-submit-button" %>
+    </div>
+  <% end %>
 </div>
 
+<script>
+  $(document).ready(function(){
+
+    var options = {
+      map: ".map-user-sign-up",
+      mapOptions: {
+        maxZoom: 21,
+        minZoom: 14,
+        mapTypeControl: false,
+        scrollwheel: false,
+        streetViewControl: false
+      },
+      markerOptions: {
+        draggable: false,
+        icon: "http://localhost:3000/assets/location.png"
+      }
+    };
+
+    // start geocomplete
+    $(".location").geocomplete(options).bind("geocode:result", function(event, result){
+      $('#find').submit();
+      $(".user-map-wrapper").slideDown(250);
+
+      // get the value of the result and put it where it is supposed to be
+      $('.latitude').val(result.geometry.location.lat());
+      $('.longitude').val(result.geometry.location.lng());
+
+      // resize map if div is hidden/none to show the map
+      var map = $(".location").geocomplete("map");
+      google.maps.event.trigger(map, "resize");
+      
+      // set map to center
+      map.setZoom(18);
+      map.setCenter(result.geometry.location);
+    });
+
+  });
+</script>

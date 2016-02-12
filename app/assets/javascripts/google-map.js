@@ -21,6 +21,7 @@ function gmap_show(user) {
     var markers = map.addMarkers(points);
     map.bounds.extendWith(markers);
     map.fitMapToBounds();
+
     //handler.getMap().setZoom(15);// set the default zoom of the map
 
     //_.each(points, function(point, index){
